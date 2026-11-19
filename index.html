@@ -1,6 +1,6 @@
-<!doctype html><html lang="da"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#152c28"><title>My Village v1.3</title><style>
+<!doctype html><html lang="da"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#152c28"><title>My Village v1.4</title><style>
 :root{color-scheme:dark;--bg:#10231f;--panel:#19332e;--line:#31534b;--ink:#e9f3df;--muted:#a9c1b5;--gold:#f5ca7d}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px system-ui,-apple-system,sans-serif;overscroll-behavior:none}header{height:57px;display:flex;align-items:center;gap:8px;padding:8px 12px;background:#19342d;border-bottom:1px solid #35554d}header strong{font-size:17px}button,select{background:#2b5146;color:#f1f7ec;border:1px solid #517c69;border-radius:9px;padding:9px 11px;font:inherit;cursor:pointer}button:active{background:#487a65}button:disabled{opacity:.4}small,.muted{color:var(--muted)}.badge{background:#294c40;border-radius:12px;padding:5px 8px;font-size:12px}#layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;height:calc(100dvh - 57px)}#mapbox{position:relative;overflow:hidden;background:#274638;touch-action:none}canvas{width:100%;height:100%;display:block;touch-action:none}#hud{position:absolute;top:10px;left:10px;display:flex;gap:5px;flex-wrap:wrap;pointer-events:none;max-width:95%}#hud span{background:#12261fe6;border:1px solid #426357;padding:6px 8px;border-radius:8px;font-size:12px}#mapbuttons{position:absolute;bottom:12px;left:12px;display:flex;gap:5px}#mapbuttons button{padding:9px 13px;background:#173329d9}aside{border-left:1px solid #35554d;overflow:auto;background:#142b26}nav{display:flex;gap:3px;overflow-x:auto;padding:9px 8px;position:sticky;top:0;background:#142b26;z-index:2}nav button{white-space:nowrap;padding:8px 9px;font-size:12px}nav button.active{background:#d6bd80;color:#18291f;border-color:#d6bd80}.pane{padding:8px 13px 22px}h2{font-size:16px;margin:9px 0 12px}h3{font-size:13px;color:#e9d19a;margin:16px 0 7px}.card{background:#1c3931;border:1px solid #355a4b;border-radius:11px;padding:10px;margin:7px 0}.item{padding:9px 4px;border-bottom:1px solid #315044;cursor:pointer}.item:hover{background:#24483c}.item b{display:block}.item small{display:block;margin-top:3px}.swatch{width:12px;height:12px;display:inline-block;border-radius:4px;border:1px solid #ffffff65;vertical-align:-1px;margin-right:5px}.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px}.stat{padding:10px;background:#1c3931;border-radius:9px}.stat b{display:block;font-size:20px;color:#f6d68e}.stat small{font-size:11px}.line{display:flex;justify-content:space-between;gap:8px;padding:5px 0;border-bottom:1px solid #315044}.timeline{border-left:2px solid #4c7c64;padding-left:12px;margin-left:4px}.event{margin:0 0 13px;font-size:12px}.event small{display:block}.progress{height:6px;border-radius:5px;background:#345348;overflow:hidden;margin-top:5px}.progress i{display:block;height:100%;background:#dfc47c}#modal{position:fixed;inset:0;background:#0009;display:none;place-items:center;z-index:5;padding:15px}#modal.open{display:grid}.dialog{width:min(540px,100%);max-height:86dvh;overflow:auto;background:#1a342d;border:1px solid #60806b;border-radius:16px;padding:17px}.dialog header{height:auto;background:none;border:0;padding:0;justify-content:space-between}.dialog p{line-height:1.55}.tree{display:flex;flex-direction:column;gap:5px}.tree .line{font-size:12px}.footer{font-size:11px;color:#8ca79a;margin:18px 0 0}.notice{background:#453b29;border:1px solid #806c3d;border-radius:9px;padding:9px;font-size:12px}.pill{border-radius:8px;background:#294b40;padding:3px 7px;display:inline-block;font-size:11px}.topspacer{flex:1}#toast{position:fixed;bottom:65px;left:50%;transform:translateX(-50%);background:#d8c38e;color:#1d2c25;padding:10px 16px;border-radius:9px;display:none;z-index:9} @media(max-width:780px){#layout{display:flex;flex-direction:column;height:calc(100dvh - 57px)}#mapbox{height:53%;flex-shrink:0}aside{height:47%;border-left:0;border-top:1px solid #35554d}header strong{font-size:15px}header .badge{display:none}nav{padding:6px}nav button{padding:8px 10px}}
-</style></head><body><header><strong>🌿 My Village</strong><span class="badge">v1.3 · Active Village</span><span class="topspacer"></span><span id="clock" class="muted">År 1 · Dag 1</span><button id="pause" title="Pause">⏸</button><button id="save" title="Gem">💾</button></header><div id="layout"><section id="mapbox"><canvas id="world"></canvas><div id="hud"></div><div id="mapbuttons"><button id="zin">＋</button><button id="zout">－</button><button id="center">⌖</button></div></section><aside><nav id="tabs"></nav><div class="pane" id="pane"></div></aside></div><div id="modal"><div class="dialog"><header><strong id="mtitle"></strong><button id="close">✕</button></header><div id="mbody"></div></div></div><div id="toast"></div><script>
+</style></head><body><header><strong>🌿 My Village</strong><span class="badge">v1.4 · Purposeful Paths</span><span class="topspacer"></span><span id="clock" class="muted">År 1 · Dag 1</span><button id="pause" title="Pause">⏸</button><button id="save" title="Gem">💾</button></header><div id="layout"><section id="mapbox"><canvas id="world"></canvas><div id="hud"></div><div id="mapbuttons"><button id="zin">＋</button><button id="zout">－</button><button id="center">⌖</button></div></section><aside><nav id="tabs"></nav><div class="pane" id="pane"></div></aside></div><div id="modal"><div class="dialog"><header><strong id="mtitle"></strong><button id="close">✕</button></header><div id="mbody"></div></div></div><div id="toast"></div><script>
 (()=>{'use strict';
 const VERSION=1,KEY='my_village_autonomous_v1',WORLD=512,DAY_MS=40000,YEAR=360,MAX_PEOPLE=900,MAX_EVENTS=180,MAX_HISTORY=7000;
 const names=['Ava','Eli','Mira','Noah','Luna','Otto','Freya','Ivar','Sia','Leo','Alma','Finn','Edda','Rune','Liv','Nora','Milo','Saga','Aron','Ida','Emil','Astrid','Bo','Tara','Viggo','Nina','Kian','Ella','Thea','Sven','Asta','Kai','Rosa','Erik','Lina','Mads','Tove','Odin','Sofie','Johan'];
@@ -32,7 +32,7 @@ function findPartner(p){if(p.partner||age(p)<18)return;let options=S.people.filt
 function footprint(type){return type==='farm'?1.45:['hall','factory','market','workshop'].includes(type)?1.25:1.05}
 function siteFree(x,y,type,ignoreId=null){
  const r=footprint(type);
- if(x<3||y<3||x>WORLD-4||y>WORLD-4||!nearLand(x,y))return false;
+ if(x<3||y<3||x>WORLD-4||y>WORLD-4||!nearLand(x,y))return false;for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++)if(isTree(x+dx,y+dy))return false;
  for(const b of S.buildings){if(b.id===ignoreId)continue;const min=r+footprint(b.type)+.55;if(Math.abs(b.x-x)<min&&Math.abs(b.y-y)<min)return false}
  for(const v of S.villages){if(type!=='camp'&&Math.abs(v.x-x)<1.35&&Math.abs(v.y-y)<1.35)return false}
  return true;
@@ -46,50 +46,65 @@ function findBuildingSite(v,type){
  }
  return null;
 }
-function movementTarget(p,v){
- const home=p.home&&S.buildings.find(b=>b.id===p.home&&b.done);
- const own=S.buildings.filter(b=>b.village===v.id);
- const finished=own.filter(b=>b.done);
- let target=null;
- if(p.energy<20||p.action==='Hviler')target=home||own.find(b=>b.type==='camp');
- else if(p.job==='bonde')target=finished.find(b=>b.type==='farm');
- else if(p.job==='minearbejder')target=finished.find(b=>b.type==='mine');
- else if(p.job==='handler')target=finished.find(b=>b.type==='market');
- else if(p.job==='bygger')target=own.find(b=>!b.done);
- else if(p.job==='håndværker')target=finished.find(b=>b.type==='workshop');
- if(!target&&Math.random()<.24)target=home||pick(finished);
- let x,y;
- if(target){const a=rnd(0,Math.PI*2),dist=footprint(target.type)+.55+rnd(0,.75);x=target.x+Math.cos(a)*dist;y=target.y+Math.sin(a)*dist}
- else {
-  const range=['jæger','samler','skovhugger'].includes(p.job)?Math.min(11,v.territory+4):age(p)<16?4.5:6.5;
-  const a=rnd(0,Math.PI*2),dist=rnd(2.3,range);x=v.x+Math.cos(a)*dist;y=v.y+Math.sin(a)*dist;
+// Physical, four-neighbour tile navigation. No diagonal or through-tree movement.
+const tileKey=(x,y)=>Math.round(x)+','+Math.round(y);
+function ensureWorld(){if(!S.cleared)S.cleared={};if(!S.footTraffic)S.footTraffic={};if(!S.cutJobs)S.cutJobs={};for(const v of S.villages){for(let y=Math.round(v.y)-2;y<=Math.round(v.y)+2;y++)for(let x=Math.round(v.x)-2;x<=Math.round(v.x)+2;x++)S.cleared[tileKey(x,y)]=1}for(const b of S.buildings)for(let y=Math.round(b.y)-2;y<=Math.round(b.y)+2;y++)for(let x=Math.round(b.x)-2;x<=Math.round(b.x)+2;x++)S.cleared[tileKey(x,y)]=1;}
+function isTree(x,y){x=Math.round(x);y=Math.round(y);if(S.cleared?.[tileKey(x,y)])return false;const t=terrain(x,y);return (t==='forest'&&hash(x,y,32)>.48)||(t==='grass'&&hash(x,y,32)>.94)}
+function blocked(x,y){if(x<2||y<2||x>509||y>509||!nearLand(x,y)||isTree(x,y))return true;return S.buildings.some(b=>Math.abs(b.x-x)<footprint(b.type)*.62&&Math.abs(b.y-y)<footprint(b.type)*.62)}
+const cardinal=[[1,0],[-1,0],[0,1],[0,-1]];
+function route(sx,sy,gx,gy){
+ sx=Math.round(sx);sy=Math.round(sy);gx=Math.round(gx);gy=Math.round(gy);
+ if(sx===gx&&sy===gy)return [];
+ // bounded A*: keep search local, capped for battery use.
+ const key=(x,y)=>x+','+y, start=key(sx,sy),best=new Map([[start,{x:sx,y:sy,g:0,f:Math.abs(gx-sx)+Math.abs(gy-sy),parent:null}]]),open=[start],closed=new Set();let steps=0,found=null;
+ while(open.length&&steps++<1350){let index=0;for(let i=1;i<open.length;i++)if(best.get(open[i]).f<best.get(open[index]).f)index=i;const k=open.splice(index,1)[0],n=best.get(k);if(n.x===gx&&n.y===gy){found=k;break}closed.add(k);
+ for(const [dx,dy] of cardinal){let x=n.x+dx,y=n.y+dy,kk=key(x,y);if(closed.has(kk)||blocked(x,y)||Math.abs(x-sx)+Math.abs(y-sy)>42)continue;const g=n.g+1-(S.footTraffic?.[kk]>=4?.12:0),old=best.get(kk);if(old&&g>=old.g)continue;best.set(kk,{x,y,g,f:g+Math.abs(gx-x)+Math.abs(gy-y),parent:k});if(!open.includes(kk))open.push(kk)}
  }
- return {x:clamp(x,2,509),y:clamp(y,2,509)};
+ if(!found)return null;const path=[];for(let k=found;k!==start;k=best.get(k).parent){const n=best.get(k);path.push([n.x,n.y])}return path.reverse();
 }
-function movePerson(p,v){
- for(let i=0;i<12;i++){
-  const q=movementTarget(p,v);
-  if(!nearLand(q.x,q.y))continue;
-  if(S.buildings.some(b=>Math.hypot(b.x-q.x,b.y-q.y)<footprint(b.type)+.20))continue;
-  p.destX=q.x;p.destY=q.y;return;
+function closestAccess(x,y){x=Math.round(x);y=Math.round(y);if(!blocked(x,y))return [x,y];for(let r=1;r<5;r++)for(let dx=-r;dx<=r;dx++)for(let dy=-r;dy<=r;dy++){if(Math.abs(dx)+Math.abs(dy)!==r)continue;if(!blocked(x+dx,y+dy))return [x+dx,y+dy]}return null}
+function chooseTask(p,v){
+ const home=p.home&&S.buildings.find(b=>b.id===p.home&&b.done),buildings=S.buildings.filter(b=>b.village===v.id),finished=buildings.filter(b=>b.done);
+ let target=null,task='Arbejder';const adult=age(p)>=16;
+ if(p.energy<20){target=home||buildings.find(b=>b.type==='camp');task='Hviler'}
+ else if(!adult){target=home||buildings.find(b=>b.type==='camp');task='Leger og lærer'}
+ else if(p.job==='bonde'){target=finished.find(b=>b.type==='farm');task='Dyrker marker'}
+ else if(p.job==='minearbejder'){target=finished.find(b=>b.type==='mine');task='Bryder sten'}
+ else if(p.job==='handler'){target=finished.find(b=>b.type==='market');task='Handler'}
+ else if(p.job==='bygger'){target=buildings.find(b=>!b.done);task='Bygger'}
+ else if(p.job==='håndværker'){target=finished.find(b=>b.type==='workshop');task='Fremstiller varer'}
+ else if(p.job==='forsker'){target=buildings.find(b=>b.type==='camp');task='Undersøger'}
+ else if(p.job==='vagt'){target=buildings.find(b=>b.type==='camp');task='Holder vagt'}
+ if(target){let opts=[];for(let dy=-3;dy<=3;dy++)for(let dx=-3;dx<=3;dx++){const x=Math.round(target.x)+dx,y=Math.round(target.y)+dy;if(Math.abs(dx)+Math.abs(dy)<2||Math.abs(dx)+Math.abs(dy)>4||blocked(x,y))continue;opts.push([x,y])}opts.sort((a,b)=>(Math.abs(a[0]-p.x)+Math.abs(a[1]-p.y))-(Math.abs(b[0]-p.x)+Math.abs(b[1]-p.y)));if(opts.length)return {dest:opts[0],task};}
+ // Gatherers seek real, visible resources, not random points in a circle.
+ const cx=Math.round(p.x),cy=Math.round(p.y),choices=[];
+ for(let y=cy-9;y<=cy+9;y++)for(let x=cx-9;x<=cx+9;x++){
+  if(x<2||y<2||x>509||y>509)continue;const t=terrain(x,y),dist=Math.abs(x-cx)+Math.abs(y-cy);if(dist<2||dist>15)continue;
+  if(p.job==='skovhugger'&&isTree(x,y)){
+   for(const [dx,dy] of cardinal)if(!blocked(x+dx,y+dy))choices.push({dest:[x+dx,y+dy],tree:[x,y],task:'Fælder træ',score:dist+rnd(0,4)});
+  }else if(!blocked(x,y)&&((p.job==='samler'&&t==='grass'&&hash(x,y,41)>.60)||(p.job==='jæger'&&t==='forest')||(p.job==='bonde'&&t==='grass')||(!adult&&dist<5))){choices.push({dest:[x,y],task:adult?(p.job==='jæger'?'Jager':'Samler mad'):'Leger og lærer',score:dist+rnd(0,8)})}
  }
- p.destX=p.x;p.destY=p.y;
+ choices.sort((a,b)=>a.score-b.score);return choices[0]||{dest:closestAccess(v.x,v.y)||[cx,cy],task:'Venter'};
 }
+function planPerson(p,v){
+ for(let i=0;i<4;i++){const q=chooseTask(p,v);if(!q?.dest)break;const path=route(p.x,p.y,q.dest[0],q.dest[1]);if(path){p.path=path;p.pathIndex=0;p.workTree=q.tree||null;p.action=q.task;p.workUntil=0;return}}
+ p.path=[];p.pathIndex=0;p.workTree=null;p.action='Afventer fri rute';p.waitUntil=performance.now()+2500;
+}
+function movePerson(p,v){p.path=[];p.pathIndex=0;p.workUntil=0;planPerson(p,v)}
 function animatePeople(dt){
- const now=performance.now(),speed=dt*.00110;
- for(const p of S.people){
-  if(p.dead!==null)continue;
-  const v=village(p.village);if(!v)continue;
-  const d=Number.isFinite(p.destX)&&Number.isFinite(p.destY)?Math.hypot(p.destX-p.x,p.destY-p.y):0;
-  if(d<.18){
-   if(!p.waitUntil||now>=p.waitUntil){movePerson(p,v);p.waitUntil=now+rnd(250,1300)}
-   continue;
+ const now=performance.now(),speed=dt*.00165;
+ for(const p of S.people){if(p.dead!==null)continue;const v=village(p.village);if(!v)continue;
+  if(!Array.isArray(p.path))p.path=[];
+  if(p.pathIndex>=p.path.length){
+   if(!p.workUntil){p.workUntil=now+(p.workTree?2100:2500);p.waitUntil=p.workUntil}
+   if(now<p.workUntil)continue;
+   if(p.workTree){const [tx,ty]=p.workTree;if(isTree(tx,ty)&&Math.abs(Math.round(p.x)-tx)+Math.abs(Math.round(p.y)-ty)===1){S.cleared[tileKey(tx,ty)]=1;v.wood+=1;S.ecology.forest=clamp(S.ecology.forest-.0002,0,100);chunkCache.delete(Math.floor(tx/32)+','+Math.floor(ty/32));dirty=true}p.workTree=null}
+   if(now<(p.waitUntil||0))continue;planPerson(p,v);continue;
   }
-  const dx=p.destX-p.x,dy=p.destY-p.y,step=Math.min(d,speed*(age(p)<16?.78:1));
-  const nx=p.x+dx/d*step,ny=p.y+dy/d*step;
-  if(nearLand(nx,ny)&&!S.buildings.some(b=>Math.hypot(b.x-nx,b.y-ny)<footprint(b.type)*.60)){
-   p.x=nx;p.y=ny;
-  }else{p.destX=p.x;p.destY=p.y;p.waitUntil=now+rnd(100,400)}
+  const next=p.path[p.pathIndex];if(!next||blocked(next[0],next[1])){p.path=[];p.pathIndex=0;p.workUntil=0;p.waitUntil=now+1200;continue}
+  const dx=next[0]-p.x,dy=next[1]-p.y,d=Math.abs(dx)+Math.abs(dy),step=Math.min(d,speed*(age(p)<16?.75:1));
+  if(d<=step+.0001){p.x=next[0];p.y=next[1];p.pathIndex++;const k=tileKey(p.x,p.y);if(!S.footTraffic[k]||S.footTraffic[k]<24){S.footTraffic[k]=(S.footTraffic[k]||0)+1;dirty=true}}
+  else if(Math.abs(dx)>.0001)p.x+=Math.sign(dx)*step;else p.y+=Math.sign(dy)*step;
  }
 }
 function build(v,type){
@@ -105,7 +120,7 @@ function buildingName(t){return ({camp:'lejr',hut:'hus',farm:'mark',workshop:'v�
 function completeBuilding(b){b.done=1;let v=village(b.village);if(!v)return;v.buildings++;if(b.type==='hut'){let unhomed=S.people.filter(p=>p.dead===null&&p.village===v.id&&!p.home);for(const p of unhomed.slice(0,3))p.home=b.id}log(`${v.name}: ${buildingName(b.type)} er færdigbygget.`,'building')}
 function techStep(v){let t=S.tech,workers=S.people.filter(p=>p.dead===null&&p.village===v.id&&p.job==='forsker'&&age(p)>=16).length;let gain=.0012+workers*.002;let opts=['farming','woodworking','mining','trade','governance','medicine','engineering','metalworking','electricity'];let k=pick(opts);let requirements={metalworking:t.mining>=1&&v.iron>=3,electricity:t.engineering>=2&&t.metalworking>=2,engineering:t.woodworking>=1,governance:S.villages.length>1||v.conflicts>1};if(requirements[k]===false)return;t[k]+=gain;if(t[k]>=1&&t[k]-gain<1)log(`Opdagelse: ${techName(k)}!`,'tech');if(t[k]>=2&&t[k]-gain<2)log(`Ny viden: avanceret ${techName(k)}.`,'tech')}
 function techName(k){return ({farming:'landbrug',woodworking:'træbearbejdning',mining:'minedrift',trade:'handel',governance:'samfundsregler',medicine:'lægekunst',engineering:'ingeniørkunst',metalworking:'metalbearbejdning',electricity:'elektricitet'})[k]}
-function villageDaily(v,people){v.pop=people.length;if(!people.length)return;v.food-=people.length*.19;let gather=0,wood=0,stone=0,iron=0,work=0;for(let p of people){let a=age(p);if(a<3){p.action='Bliver passet';continue}if(a<16){p.action='Leger og lærer';p.knowledge+=.00003;continue}if(p.energy<15){p.energy=clamp(p.energy+22,0,100);p.action='Hviler';continue}if(Math.random()<.008)pickJob(p,v);let efficiency=.45+p.skill*.7;if(p.job==='samler'){gather+=.6*efficiency;p.action='Samler mad'}else if(p.job==='jæger'){gather+=.8*efficiency*(S.ecology.wildlife/100);p.action='Jager';S.ecology.wildlife=clamp(S.ecology.wildlife-.0009,5,100)}else if(p.job==='bonde'){gather+=(S.tech.farming>=1?1.45:.35)*efficiency;p.action='Dyrker marker'}else if(p.job==='skovhugger'){wood+=.65*efficiency*(S.ecology.forest/100);p.action='Hugger træ';S.ecology.forest=clamp(S.ecology.forest-.0015,3,100)}else if(p.job==='minearbejder'){stone+=.4*efficiency;iron+=S.tech.mining>=1?.14*efficiency:0;p.action='Bryder sten'}else if(p.job==='bygger'){work+=.75*efficiency;p.action='Bygger'}else if(p.job==='handler'){v.coins+=.12*efficiency;p.action='Handler'}else if(p.job==='forsker'){p.knowledge+=.0005;p.action='Undersøger'}else if(p.job==='vagt'){p.action='Holder vagt'}else{wood+=.15*efficiency;p.action='Fremstiller varer'}p.energy=clamp(p.energy-3+rnd(0,2),0,100);p.energy=clamp(p.energy+5,0,100);p.skill=clamp(p.skill+.00009,0,2);if(Math.random()<.75)movePerson(p,v)}v.food+=gather;v.wood+=wood;v.stone+=stone;v.iron+=iron;let works=S.buildings.filter(b=>b.village===v.id&&!b.done);if(works.length&&work){works[0].progress+=work/Math.max(8,works[0].type==='hut'?12:30);if(works[0].progress>=1)completeBuilding(works[0])}let farms=S.buildings.filter(b=>b.village===v.id&&b.done&&b.type==='farm').length;v.food+=farms*(S.tech.farming>=1?.75:.2);if(v.food<0){v.food=0;for(let p of people){p.health-=rnd(.04,.3);p.action='Mangler mad'}if(Math.random()<.025)log(`${v.name} oplever fødevaremangel.`,'danger')}else for(let p of people)p.health=clamp(p.health+.08,0,100);if(v.food>1000)v.food=1000;
+function villageDaily(v,people){v.pop=people.length;if(!people.length)return;v.food-=people.length*.19;let gather=0,wood=0,stone=0,iron=0,work=0;for(let p of people){let a=age(p);if(a<3){p.action='Bliver passet';continue}if(a<16){p.action='Leger og lærer';p.knowledge+=.00003;continue}if(p.energy<15){p.energy=clamp(p.energy+22,0,100);p.action='Hviler';continue}if(Math.random()<.008)pickJob(p,v);let efficiency=.45+p.skill*.7;if(p.job==='samler'){gather+=.6*efficiency;p.action='Samler mad'}else if(p.job==='jæger'){gather+=.8*efficiency*(S.ecology.wildlife/100);p.action='Jager';S.ecology.wildlife=clamp(S.ecology.wildlife-.0009,5,100)}else if(p.job==='bonde'){gather+=(S.tech.farming>=1?1.45:.35)*efficiency;p.action='Dyrker marker'}else if(p.job==='skovhugger'){wood+=.65*efficiency*(S.ecology.forest/100);p.action='Hugger træ';S.ecology.forest=clamp(S.ecology.forest-.0015,3,100)}else if(p.job==='minearbejder'){stone+=.4*efficiency;iron+=S.tech.mining>=1?.14*efficiency:0;p.action='Bryder sten'}else if(p.job==='bygger'){work+=.75*efficiency;p.action='Bygger'}else if(p.job==='handler'){v.coins+=.12*efficiency;p.action='Handler'}else if(p.job==='forsker'){p.knowledge+=.0005;p.action='Undersøger'}else if(p.job==='vagt'){p.action='Holder vagt'}else{wood+=.15*efficiency;p.action='Fremstiller varer'}p.energy=clamp(p.energy-3+rnd(0,2),0,100);p.energy=clamp(p.energy+5,0,100);p.skill=clamp(p.skill+.00009,0,2);if(!Array.isArray(p.path))movePerson(p,v)}v.food+=gather;v.wood+=wood;v.stone+=stone;v.iron+=iron;let works=S.buildings.filter(b=>b.village===v.id&&!b.done);if(works.length&&work){works[0].progress+=work/Math.max(8,works[0].type==='hut'?12:30);if(works[0].progress>=1)completeBuilding(works[0])}let farms=S.buildings.filter(b=>b.village===v.id&&b.done&&b.type==='farm').length;v.food+=farms*(S.tech.farming>=1?.75:.2);if(v.food<0){v.food=0;for(let p of people){p.health-=rnd(.04,.3);p.action='Mangler mad'}if(Math.random()<.025)log(`${v.name} oplever fødevaremangel.`,'danger')}else for(let p of people)p.health=clamp(p.health+.08,0,100);if(v.food>1000)v.food=1000;
 const homes=S.buildings.filter(b=>b.village===v.id&&b.done&&b.type==='hut').length,farmsAll=S.buildings.filter(b=>b.village===v.id&&b.type==='farm').length;
 if(S.buildings.filter(b=>b.village===v.id&&!b.done).length<2){if(homes*3+5<v.pop&&v.wood>=4)build(v,'hut');else if(farmsAll<Math.max(1,Math.floor(v.pop/7))&&v.wood>=2)build(v,'farm');else if(S.tech.woodworking>=1&&v.wood>=6&&v.stone>=2&&!S.buildings.some(b=>b.village===v.id&&b.type==='workshop'))build(v,'workshop');else if(S.tech.mining>=1&&v.wood>=5&&v.stone>=3&&!S.buildings.some(b=>b.village===v.id&&b.type==='mine'))build(v,'mine');else if(S.tech.trade>=1&&v.wood>=7&&v.stone>=4&&!S.buildings.some(b=>b.village===v.id&&b.type==='market'))build(v,'market');else if(v.conflicts>3&&v.wood>=8&&v.stone>=5&&!S.buildings.some(b=>b.village===v.id&&b.type==='guardhouse'))build(v,'guardhouse');else if(S.tech.governance>=1&&v.pop>25&&v.wood>=12&&v.stone>=8&&!S.buildings.some(b=>b.village===v.id&&b.type==='hall'))build(v,'hall');else if(S.tech.engineering>=2&&v.wood>=18&&v.stone>=12&&!S.buildings.some(b=>b.village===v.id&&b.type==='factory'))build(v,'factory');else if(S.tech.electricity>=1&&v.wood>=25&&v.stone>=20&&!S.buildings.some(b=>b.village===v.id&&b.type==='power'))build(v,'power')}
 if(v.pop>10&&Math.random()<.0007){let candidates=people.filter(p=>age(p)>20);if(candidates.length){let leader=candidates.sort((a,b)=>(b.trust+b.ambition)-(a.trust+a.ambition))[0];if(v.leader!==leader.id){v.leader=leader.id;log(`${leader.name} får indflydelse i ${v.name}.`,'social')}}}if(v.pop>20&&v.territory<25&&Math.random()<.01)v.territory+=.1;techStep(v)}
@@ -123,7 +138,7 @@ function repairOldSites(){
    if(site){b.x=site.x;b.y=site.y;changed=true}
   }
  }
- if(changed){for(const p of S.people){p.destX=undefined;p.destY=undefined}dirty=true;log('Bygninger er flyttet til ledige byggefelter.','world')}
+ if(changed){for(const p of S.people){p.path=[];p.pathIndex=0}dirty=true;log('Bygninger er flyttet til ledige byggefelter.','world')}
 }
 function offline(){let delta=Math.max(0,Date.now()-(S.lastSaved||Date.now())),days=Math.floor(delta/DAY_MS);if(days<=0)return;let simulated=Math.min(days,1080);for(let i=0;i<simulated;i++)daily();S.progress=0;S.lastSaved=Date.now();log(`Offline: ${simulated} spildage simuleret${days>simulated?' (begrænset for ydelse)':''}.`,'history');save()}
 const colors={water:'#3d86a0',shore:'#a3a27b',mountain:'#8c9189',forest:'#759958',dry:'#8c9470',grass:'#7d9e60'};
@@ -140,7 +155,7 @@ function chunk(cx,cy){
   if(t==='shore'){g.fillStyle='#a4a47a';g.fillRect(px,py,16,16)}
   if(r>.84){g.fillStyle='#64884e';g.fillRect(px+3,py+3,2,2);g.fillRect(px+11,py+12,2,2)}
   if(r>.965){g.fillStyle='#b9bd8d';g.fillRect(px+7,py+4,2,2)}
-  const tree=t==='forest'?hash(X,Y,32)>.48:(t==='grass'?hash(X,Y,32)>.94:false);
+  const tree=isTree(X,Y);
   if(tree){
     g.fillStyle='#4e5b37';g.fillRect(px+7,py+11,3,4);
     g.fillStyle='#2f5938';g.fillRect(px+2,py+5,12,8);
@@ -158,6 +173,8 @@ function draw(){
  ctx.setTransform(dpr,0,0,dpr,0,0);ctx.imageSmoothingEnabled=false;ctx.fillStyle='#7d9e60';ctx.fillRect(0,0,w,h);
  const z=cam.z,x0=cam.x-w/(2*z),y0=cam.y-h/(2*z),x1=cam.x+w/(2*z),y1=cam.y+h/(2*z);
  for(let cy=Math.max(0,Math.floor(y0/32));cy<=Math.min(15,Math.floor(y1/32));cy++)for(let cx=Math.max(0,Math.floor(x0/32));cx<=Math.min(15,Math.floor(x1/32));cx++)ctx.drawImage(chunk(cx,cy),(cx*32-x0)*z,(cy*32-y0)*z,32*z,32*z);
+ // Trails are earned by actual footsteps, not drawn through forests.
+ for(const [key,count] of Object.entries(S.footTraffic||{})){if(count<4)continue;const [tx,ty]=key.split(',').map(Number);if(tx<x0-1||tx>x1+1||ty<y0-1||ty>y1+1)continue;ctx.fillStyle=count>12?'#e5d39a':'#c7bd86';ctx.fillRect((tx-x0)*z-z*.16,(ty-y0)*z-z*.16,z*.32,z*.32)}
  // Buildings occupy clear ground; forest sprites from cached terrain must not cover them.
  const buildings=S.buildings.filter(b=>b.x>x0-8&&b.x<x1+8&&b.y>y0-8&&b.y<y1+8);
  for(const b of buildings){
@@ -166,7 +183,7 @@ function draw(){
   ctx.fillStyle='#718e58';ctx.fillRect(x+z*.12,y+z*.12,(r*2-.24)*z,(r*2-.24)*z);
  }
  ctx.strokeStyle='#e8d69c';ctx.lineWidth=Math.max(1.5,z*.20);ctx.lineCap='square';ctx.lineJoin='miter';
- for(const b of buildings){
+ for(const b of []){
   const v=village(b.village);if(!v||b.type==='camp'||Math.hypot(b.x-v.x)>19||Math.abs(b.y-v.y)>19)continue;
   const x=(b.x-x0)*z,y=(b.y-y0)*z,tx=(v.x-x0)*z,ty=(v.y-y0)*z;
   ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(tx,y);ctx.lineTo(tx,ty);ctx.stroke();
@@ -212,7 +229,7 @@ if(tab==='villages'){html=`<h2>🗺️ Bosættelser og nationer</h2>${vs.map(v=>
 if(tab==='history'){html=`<h2>📜 Verdenshistorie</h2><div class="timeline">${S.events.map(e=>`<div class="event"><small>${dateStr(e.day)} · ${safe(e.type)}</small>${safe(e.msg)}</div>`).join('')}</div>`}
 if(tab==='stats'){let total=vs.reduce((a,v)=>a+v.food,0);html=`<h2>📊 Statistik</h2><div class="stats"><div class="stat"><b>${fmt(live.length)}</b><small>Befolkning</small></div><div class="stat"><b>${fmt(S.history.length)}</b><small>Registrerede dødsfald</small></div><div class="stat"><b>${fmt(total)}</b><small>Samlet mad</small></div><div class="stat"><b>${fmt(vs.length)}</b><small>Bosættelser</small></div></div><h3>Befolkning over tid</h3>${populationTrend()}<h3>Erhverv</h3>${jobs.map(j=>`<div class="line">${j}<b>${live.filter(p=>p.job===j).length}</b></div>`).join('')}<h3>Bygninger</h3>${[...new Set(S.buildings.map(b=>b.type))].map(t=>`<div class="line">${buildingName(t)}<b>${S.buildings.filter(b=>b.type===t&&b.done).length}</b></div>`).join('')}`}
 if(tab==='tech'){html=`<h2>🔬 Viden og opdagelser</h2><p class="muted">Viden opstår gradvist gennem arbejde, observation og videregivelse. Opdagelser er ikke garanterede.</p>${Object.entries(S.tech).map(([k,v])=>`<div class="card"><div class="line"><b>${techName(k)}</b><span>${v>=2?'Avanceret':v>=1?'Opdaget':'Uopdaget'}</span></div><div class="progress"><i style="width:${clamp(v%1*100,0,100)}%"></i></div><small>${fmt(v)} forskningspoint</small></div>`).join('')}`}
-if(tab==='settings'){html=`<h2>⚙️ Verden og data</h2><div class="card"><b>Simulation</b><p>1 spildag = 40 sekunder. 360 dage = 1 spilår (4 timer).</p><p>Offline fremskridt beregnes, når du åbner spillet igen, op til 1.080 spildage pr. åbning.</p><p>Verden gemmes lokalt på denne enhed. Eksportér backup før du rydder browserdata.</p></div><button id="export">⬇ Eksportér backup</button> <button id="import">⬆ Importér backup</button><input id="file" type="file" accept="application/json" hidden><h3>Ny verden</h3><button id="restart">🔄 Start helt forfra</button><p class="footer">My Village v1.3 · 512×512 kort · ingen server · ingen reklamer · offline-klar efter første indlæsning (afhænger af browserens cache).</p>`}
+if(tab==='settings'){html=`<h2>⚙️ Verden og data</h2><div class="card"><b>Simulation</b><p>1 spildag = 40 sekunder. 360 dage = 1 spilår (4 timer).</p><p>Offline fremskridt beregnes, når du åbner spillet igen, op til 1.080 spildage pr. åbning.</p><p>Verden gemmes lokalt på denne enhed. Eksportér backup før du rydder browserdata.</p></div><button id="export">⬇ Eksportér backup</button> <button id="import">⬆ Importér backup</button><input id="file" type="file" accept="application/json" hidden><h3>Ny verden</h3><button id="restart">🔄 Start helt forfra</button><p class="footer">My Village v1.4 · 512×512 kort · ingen server · ingen reklamer · offline-klar efter første indlæsning (afhænger af browserens cache).</p>`}
 pane.innerHTML=html;$('#clock').textContent=dateStr(S.day);$('#hud').innerHTML=`<span>👥 ${S.people.length}</span><span>🏘️ ${S.villages.length}</span><span>🌲 ${Math.round(S.ecology.forest)}%</span><span>${paused?'⏸ Pause':'▶ Live'}</span>`}
 function modal(title,html){$('#mtitle').textContent=title;$('#mbody').innerHTML=html;$('#modal').classList.add('open')}
 function tree(id,depth=0,visited=new Set()){let p=who(id);if(!p||depth>5||visited.has(id))return '';visited.add(id);let s=`<div class="line" style="padding-left:${depth*12}px"><span><span class="swatch" style="background:${p.color}"></span>${safe(p.name)} #${p.id}</span><small>${p.dead!==null?dateStr(p.born)+' – '+dateStr(p.dead):Math.floor(age(p))+' år'}</small></div>`;if(depth<5){if(p.mother)s+=tree(p.mother,depth+1,new Set(visited));if(p.father)s+=tree(p.father,depth+1,new Set(visited))}return s}
@@ -224,6 +241,6 @@ $('#tabs').addEventListener('click',e=>{let b=e.target.closest('[data-tab]');if(
 canvas.addEventListener('pointerdown',e=>{canvas.setPointerCapture(e.pointerId);drag={x:e.clientX,y:e.clientY,camX:cam.x,camY:cam.y,moved:false}});canvas.addEventListener('pointermove',e=>{if(!drag)return;let dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(Math.abs(dx)+Math.abs(dy)>5)drag.moved=true;cam.x=drag.camX-dx/cam.z;cam.y=drag.camY-dy/cam.z;resizeClamp()});canvas.addEventListener('pointerup',e=>{if(!drag)return;if(!drag.moved){let r=canvas.getBoundingClientRect(),x=cam.x+(e.clientX-r.left-r.width/2)/cam.z,y=cam.y+(e.clientY-r.top-r.height/2)/cam.z;let p=S.people.find(p=>Math.hypot(p.x-x,p.y-y)<1.3);if(p)showPerson(p.id);else{let v=S.villages.find(v=>Math.hypot(v.x-x,v.y-y)<2);if(v)showVillage(v.id)}}drag=null});canvas.addEventListener('wheel',e=>{e.preventDefault();cam.z*=e.deltaY>0?.87:1.15;resizeClamp()},{passive:false});
 let touches=new Map(),pinch=0;canvas.addEventListener('touchstart',e=>{for(let t of e.changedTouches)touches.set(t.identifier,{x:t.clientX,y:t.clientY});if(touches.size===2){let a=[...touches.values()];pinch=Math.hypot(a[0].x-a[1].x,a[0].y-a[1].y)}},{passive:true});canvas.addEventListener('touchmove',e=>{for(let t of e.changedTouches)touches.set(t.identifier,{x:t.clientX,y:t.clientY});if(touches.size===2){let a=[...touches.values()],d=Math.hypot(a[0].x-a[1].x,a[0].y-a[1].y);if(pinch>0)cam.z*=clamp(d/pinch,.8,1.2);pinch=d;resizeClamp();drag=null}},{passive:true});canvas.addEventListener('touchend',e=>{for(let t of e.changedTouches)touches.delete(t.identifier);if(touches.size<2)pinch=0},{passive:true});
 function loop(t){let dt=Math.min(1000,t-(lastFrame||t));lastFrame=t;if(!paused){animatePeople(dt);acc+=dt;while(acc>=DAY_MS&&acc<DAY_MS*3){daily();acc-=DAY_MS}if(acc>=DAY_MS*3)acc=0}if(t-renderAt>115){draw();renderAt=t}if(t-uiAt>1300){renderPane();uiAt=t}requestAnimationFrame(loop)}
-if(!load())start();else{repairOldSites();let v=S.villages[0];cam.x=v.x;cam.y=v.y;offline()}renderPane();requestAnimationFrame(loop);setInterval(()=>{if(dirty)save()},30000);document.addEventListener('visibilitychange',()=>{if(document.hidden){if(dirty)save()}else{if(!paused)offline();lastFrame=0;renderPane()}});window.addEventListener('pagehide',()=>{if(dirty)save()});
+if(!load())start();else{repairOldSites();let v=S.villages[0];cam.x=v.x;cam.y=v.y;offline()}ensureWorld();for(const p of S.people){p.path=[];p.pathIndex=0;p.workUntil=0;p.waitUntil=0;p.x=Math.round(p.x);p.y=Math.round(p.y)}chunkCache.clear();renderPane();requestAnimationFrame(loop);setInterval(()=>{if(dirty)save()},30000);document.addEventListener('visibilitychange',()=>{if(document.hidden){if(dirty)save()}else{if(!paused)offline();lastFrame=0;renderPane()}});window.addEventListener('pagehide',()=>{if(dirty)save()});
 })();
 </script></body></html>
